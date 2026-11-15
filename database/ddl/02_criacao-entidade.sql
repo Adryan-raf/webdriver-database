@@ -35,6 +35,20 @@ CREATE TABLE IF NOT EXISTS Administrador(
     FOREIGN KEY (id_usuario) REFERENCES Usuario(id)
 );
 
+CREATE TABLE IF NOT EXISTS Arquivo(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL,
+    tipo VARCHAR(255) NOT NULL,
+    permissoes_acesso VARCHAR(255) NOT NULL,
+    tamanho BIGINT NOT NULL,
+    data_ultima_mod DATE NOT NULL,
+    localizacao VARCHAR(255) NOT NULL,
+    url VARCHAR(500) NOT NULL,
+
+    id_usuario INT NOT NULL,
+    FOREIGN KEY (id_usuario) REFERENCES Usuario(id)
+);
+
 CREATE TABLE IF NOT EXISTS Suporte(
     id INT PRIMARY KEY AUTO_INCREMENT,
     dia DATE NOT NULL,
