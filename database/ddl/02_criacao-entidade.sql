@@ -1,3 +1,11 @@
+CREATE TABLE IF NOT EXISTS Plano(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL,
+    duracao VARCHAR(255) NOT NULL,
+    data_aquisicao DATE NOT NULL, -- O modelo lógico definiu o tipo desse atributo como STRING/VARCHAR, no modelo físico isso foi corrigido
+    espaco_por_usuario INT NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS Instituicao(
     id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(255) NOT NULL,
