@@ -43,9 +43,9 @@ CREATE TABLE IF NOT EXISTS Suporte(
 
     id_usuario INT NOT NULL,
     id_admin INT NOT NULL,
-    id_arquivo INT NOT NULL,
+    id_arquivo INT,
 
     FOREIGN KEY (id_usuario) REFERENCES Usuario(id),
     FOREIGN KEY (id_admin) REFERENCES Administrador(id)
-    --FOREIGN KEY (id_arquivo) REFERENCES Arquivo(id)
+    -- FOREIGN KEY (id_arquivo) REFERENCES Arquivo(id)
 );
