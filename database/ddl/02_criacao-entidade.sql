@@ -34,3 +34,18 @@ CREATE TABLE IF NOT EXISTS Administrador(
     id_usuario INT NOT NULL,
     FOREIGN KEY (id_usuario) REFERENCES Usuario(id)
 );
+
+CREATE TABLE IF NOT EXISTS Suporte(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    dia DATE NOT NULL,
+    hora TIME NOT NULL,
+    descricao VARCHAR(255) NOT NULL,
+
+    id_usuario INT NOT NULL,
+    id_admin INT NOT NULL,
+    id_arquivo INT NOT NULL,
+
+    FOREIGN KEY (id_usuario) REFERENCES Usuario(id),
+    FOREIGN KEY (id_admin) REFERENCES Administrador(id)
+    --FOREIGN KEY (id_arquivo) REFERENCES Arquivo(id)
+);
