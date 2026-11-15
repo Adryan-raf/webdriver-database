@@ -6,5 +6,5 @@ CREATE TABLE IF NOT EXISTS Usuario(
     email VARCHAR(255) NOT NULL,
     nome VARCHAR(255) NOT NULL,
     id_instituicao INT NOT NULL,
-    FOREIGGN KEY (id_instituicao) REFERENCES Instituicao(id)
+    FOREIGN KEY (id_instituicao) REFERENCES Instituicao(id)
 );
