@@ -27,3 +27,10 @@ CREATE TABLE IF NOT EXISTS Usuario(
     id_instituicao INT NOT NULL,
     FOREIGN KEY (id_instituicao) REFERENCES Instituicao(id)
 );
+
+CREATE TABLE IF NOT EXISTS Administrador(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    
+    id_usuario INT NOT NULL,
+    FOREIGN KEY (id_usuario) REFERENCES Usuario(id)
+);
