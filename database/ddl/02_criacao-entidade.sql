@@ -102,3 +102,11 @@ CREATE TABLE IF NOT EXISTS Historico(
     FOREIGN KEY (id_arquivo) REFERENCES Arquivo(id),
     FOREIGN KEY (id_usuario) REFERENCES Usuario(id)
 );
+
+CREATE TABLE IF NOT EXISTS Atividades_Recentes(
+    id_arquivo INT NOT NULL,
+    ultima_versao DATE NOT NULL,
+    acesso ENUM('prioritario', 'nao-prioritario'),
+
+    FOREIGN KEY (id_arquivo) REFERENCES Arquivo(id)
+);
