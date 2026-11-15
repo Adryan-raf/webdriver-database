@@ -1,3 +1,13 @@
+CREATE TABLE IF NOT EXISTS Instituicao(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL,
+    endereco VARCHAR(255) NOT NULL,
+    causa_social VARCHAR(255) NOT NULL,
+
+    id_plano INT NOT NULL,
+    FOREIGH KEY (id_plano) REFERENCES Plano(id)
+);
+
 CREATE TABLE IF NOT EXISTS Usuario(
     id INT PRIMARY KEY AUTO_INCREMENT,
     login VARCHAR(255) NOT NULL,
