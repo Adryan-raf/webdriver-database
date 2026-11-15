@@ -88,3 +88,17 @@ CREATE TABLE IF NOT EXISTS Comentario(
     FOREIGN KEY (id_usuario) REFERENCES Usuario(id),
     FOREIGN KEY (id_arquivo) REFERENCES Arquivo(id)
 );
+
+CREATE TABLE IF NOT EXISTS Historico(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    conteudo_alterado TEXT NOT NULL,
+    operacao VARCHAR(255) NOT NULL,
+    data DATE NOT NULL,
+    hora TIME NOT NULL,
+
+    id_arquivo INT NOT NULL,
+    id_usuario INT NOT NULL,
+
+    FOREIGN KEY (id_arquivo) REFERENCES Arquivo(id),
+    FOREIGN KEY (id_usuario) REFERENCES Usuario(id)
+);
