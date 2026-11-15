@@ -1,3 +1,5 @@
+USE web_driver;
+
 CREATE TABLE IF NOT EXISTS Plano(
     id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(255) NOT NULL,
@@ -13,7 +15,7 @@ CREATE TABLE IF NOT EXISTS Instituicao(
     causa_social VARCHAR(255) NOT NULL,
 
     id_plano INT NOT NULL,
-    FOREIGH KEY (id_plano) REFERENCES Plano(id)
+    FOREIGN KEY (id_plano) REFERENCES Plano(id)
 );
 
 CREATE TABLE IF NOT EXISTS Usuario(
