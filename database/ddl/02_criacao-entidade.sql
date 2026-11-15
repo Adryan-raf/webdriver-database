@@ -75,3 +75,16 @@ CREATE TABLE IF NOT EXISTS Opera(
     FOREIGN KEY (id_arquivo) REFERENCES Arquivo(id),
     FOREIGN KEY (id_usuario) REFERENCES Usuario(id)
 );
+
+CREATE TABLE IF NOT EXISTS Comentario(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    data DATE NOT NULL,
+    hora TIME NOT NULL,
+    conteudo VARCHAR(500) NOT NULL,
+
+    id_usuario INT NOT NULL,
+    id_arquivo INT NOT NULL,
+
+    FOREIGN KEY (id_usuario) REFERENCES Usuario(id),
+    FOREIGN KEY (id_arquivo) REFERENCES Arquivo(id)
+);
