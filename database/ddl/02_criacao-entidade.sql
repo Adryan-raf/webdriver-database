@@ -63,3 +63,15 @@ CREATE TABLE IF NOT EXISTS Suporte(
     FOREIGN KEY (id_admin) REFERENCES Administrador(id),
     FOREIGN KEY (id_arquivo) REFERENCES Arquivo(id)
 );
+
+CREATE TABLE IF NOT EXISTS Opera(
+    operacao VARCHAR(255),
+    
+    id_usuario INT NOT NULL,
+    id_arquivo INT NOT NULL,
+    id_receptor INT NOT NULL,
+
+    FOREIGN KEY (id_usuario) REFERENCEs Usuario(id),
+    FOREIGN KEY (id_arquivo) REFERENCES Arquivo(id),
+    FOREIGN KEY (id_usuario) REFERENCES Usuario(id)
+);
