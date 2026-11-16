@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS Arquivo(
     nome VARCHAR(255) NOT NULL,
     tipo VARCHAR(255) NOT NULL,
     permissao_acesso BOOLEAN NOT NULL DEFAULT FALSE,
-    tamanho BIGINT NOT NULL,
+    tamanho VARCHAR(255) NOT NULL,
     data_ultima_mod DATETIME NOT NULL,
     localizacao VARCHAR(255) NOT NULL,
     url VARCHAR(500) NOT NULL,
