@@ -10,11 +10,11 @@ FROM Historico h
 WHERE h.id_arquivo IN (
     SELECT a.id 
     FROM Arquivo a
-    WHERE a.id_usuario = 1 -- Implementar depois: id_usuario_atual()
+    WHERE a.id_usuario = id_usuario_atual()
 
     UNION
 
     SELECT ac.id_arquivo
     FROM Acesso_Arquivo ac
-    WHERE ac.id_usuario = 1 -- Implementar depois: id_usuario_atual()
-)
+    WHERE ac.id_usuario = id_usuario_atual()
+);
