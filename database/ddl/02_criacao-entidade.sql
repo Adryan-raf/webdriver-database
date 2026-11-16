@@ -71,10 +71,13 @@ CREATE TABLE IF NOT EXISTS Opera(
         'REMOVER',
         'COMPARTILHAR'
     ) NOT NULL,
+
+    data DATE NOT NULL,
+    hora TIME NOT NULL,
     
     id_usuario INT NOT NULL,
     id_arquivo INT NOT NULL,
-    id_receptor INT NOT NULL,
+    id_receptor INT,
 
     FOREIGN KEY (id_usuario) REFERENCEs Usuario(id),
     FOREIGN KEY (id_arquivo) REFERENCES Arquivo(id),
