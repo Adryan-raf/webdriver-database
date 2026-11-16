@@ -16,6 +16,13 @@ CREATE TABLE IF NOT EXISTS Instituicao(
     FOREIGN KEY (id_plano) REFERENCES Plano(id)
 );
 
+CREATE TABLE IF NOT EXISTS Conta_Empresa(
+    login VARCHAR(255) PRIMARY KEY,
+    id_instituicao INT NOT NULL,
+
+    FOREIGN KEY (id_instituicao) REFERENCES Instituicao(id)
+);
+
 CREATE TABLE IF NOT EXISTS Usuario(
     id INT PRIMARY KEY AUTO_INCREMENT,
     login VARCHAR(255) NOT NULL UNIQUE,
@@ -110,6 +117,8 @@ CREATE TABLE IF NOT EXISTS Atividades_Recentes(
     id_arquivo INT NOT NULL,
     ultima_versao DATE NOT NULL,
     acesso ENUM('prioritario', 'nao-prioritario') NOT NULL,
+
+    PRIMARY KEY (id_arquivo),
 
     FOREIGN KEY (id_arquivo) REFERENCES Arquivo(id)
 );
