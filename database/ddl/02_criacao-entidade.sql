@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS Arquivo(
     id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(255) NOT NULL,
     tipo VARCHAR(255) NOT NULL,
-    permissoes_acesso VARCHAR(255) NOT NULL,
+    permissao_acesso BOOLEAN NOT NULL DEFAULT FALSE,
     tamanho BIGINT NOT NULL,
     data_ultima_mod DATETIME NOT NULL,
     localizacao VARCHAR(255) NOT NULL,
