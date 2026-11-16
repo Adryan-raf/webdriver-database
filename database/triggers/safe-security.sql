@@ -8,7 +8,12 @@ BEGIN
        NEW.nome LIKE '%.bat' OR 
        NEW.nome LIKE '%.sh' OR
        NEW.nome LIKE '%.msi' OR
-       NEW.nome LIKE '%.cmd' THEN
+       NEW.nome LIKE '%.cmd' OR
+       NEW.tipo = 'exe' OR
+       NEW.tipo = 'bat' OR
+       NEW.tipo = 'sh' OR
+       NEW.tipo = 'msi' OR
+       NEW.tipo = 'cmd' THEN
         SIGNAL SQLSTATE '45000'
         SET MESSAGE_TEXT = 'Arquivos executáveis não são permitidos.';
     END IF;
