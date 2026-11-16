@@ -65,12 +65,7 @@ CREATE TABLE IF NOT EXISTS Suporte(
 );
 
 CREATE TABLE IF NOT EXISTS Opera(
-    operacao ENUM(
-        'CARREGAR',
-        'ATUALIZAR',
-        'REMOVER',
-        'COMPARTILHAR'
-    ) NOT NULL,
+    operacao ENUM('CARREGAR','ATUALIZAR','REMOVER','COMPARTILHAR') NOT NULL,
 
     data DATE NOT NULL,
     hora TIME NOT NULL,
