@@ -113,3 +113,13 @@ CREATE TABLE IF NOT EXISTS Atividades_Recentes(
 
     FOREIGN KEY (id_arquivo) REFERENCES Arquivo(id)
 );
+
+CREATE TABLE IF NOT EXISTS Acesso_Arquivo(
+    id_usuario INT NOT NULL,
+    id_arquivo INT NOT NULL,
+
+    PRIMARY KEY (id_usuario, id_arquivo),
+    
+    FOREIGN KEY (id_usuario) REFERENCES Usuario(id),
+    FOREIGN KEY (id_arquivo) REFERENCES Arquivo(id)
+);
