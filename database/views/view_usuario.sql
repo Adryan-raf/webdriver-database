@@ -18,7 +18,7 @@ a.id_usuario = (
     SELECT u.id
     FROM Usuario u
     WHERE u.login = SUBSTRING_INDEX(USER(), '@', 1)
-);
+)
 
 OR
 
