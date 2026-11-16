@@ -10,10 +10,16 @@ SELECT
 
 FROM Arquivo a
 
-WHERE a.id IN(
-    SELECT id_arquivo FROM possui WHERE id_usuario = 1 -- Implementar depois: id_usuario_atual()
+WHERE a.permissao_acesso = TRUE
 
-    UNION
+OR
 
-    SELECT id_arquivo FROM Opera WHERE id_receptor = 1 -- Implementar depois: id_usuario_atual()
-)
+a.id_usuario = 1
+
+OR
+
+a.id IN(
+    SELECT ac.id_arquivo 
+    FROM Acesso_Arquivo ac
+    WHERE ac.id_usuario = 1 -- Implementar depois: id_usuario_atual()
+);
