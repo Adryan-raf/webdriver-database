@@ -11,4 +11,3 @@ END $$
 DELIMITER ;
 
 CALL Conta_usuarios(1);
-DROP PROCEDURE Conta_usuarios;

@@ -12,4 +12,3 @@ END $$
 DELIMITER ;
 
 CALL Chavear(1);
-DROP PROCEDURE Chavear;
