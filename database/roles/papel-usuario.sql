@@ -4,7 +4,7 @@ GRANT SELECT ON web_driver.view_usuario TO 'PapelUsuario';
 
 GRANT SELECT ON web_driver.view_usuario_historico TO 'PapelUsuario';
 
-GRANT INSERT, UPDATE ON web_driver.Arquivo TO 'PapelUsuario';
+GRANT SELECT, INSERT, UPDATE ON web_driver.view_usuario_arquivo TO 'PapelUsuario';
 
 CREATE USER IF NOT EXISTS 'usuario'@'localhost' IDENTIFIED BY 'usuario123';
 
