@@ -22,8 +22,12 @@ a.id_usuario = (
 
 OR
 
-a.id IN(
-    SELECT ac.id_arquivo 
+a.id IN (
+    SELECT ac.id_arquivo
     FROM Acesso_Arquivo ac
-    WHERE ac.id_usuario = 1 -- Implementar depois: id_usuario_atual()
+    WHERE ac.id_usuario = (
+        SELECT u.id
+        FROM Usuario u
+        WHERE u.login = SUBSTRING_INDEX(USER(), '@', 1)
+    )
 );
