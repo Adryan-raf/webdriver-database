@@ -7,10 +7,14 @@ SELECT
     h.hora
 FROM Historico h 
 
-WHERE h.id IN (
-    SELECT id_arquivo FROM possui WHERE id_usuario = 1
+WHERE h.id_arquivo IN (
+    SELECT a.id 
+    FROM Arquivo a
+    WHERE a.id_usuario = 1 -- Implementar depois: id_usuario_atual()
 
     UNION
 
-    SELECT id_arquivo FROM Opera WHERE id_receptor = 1;
+    SELECT ac.id_arquivo
+    FROM Acesso_Arquivo ac
+    WHERE ac.id_usuario = 1 -- Implementar depois: id_usuario_atual()
 )
