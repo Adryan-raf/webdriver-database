@@ -1,10 +1,8 @@
 CREATE ROLE IF NOT EXISTS 'PapelEmpresa';
 
-GRANT SELECT ON web_driver.view_empresa_usuarios TO 'PapelEmpresa'; -- Implementar view
+GRANT SELECT ON web_driver.view_empresa_usuarios TO 'PapelEmpresa';
 
-GRANT SELECT ON web_driver.view_empresa_arquivos TO 'PapelEmpresa'; -- Implementar view
-
-CREATE ROLE IF NOT EXISTS 'PapelEmpresa';
+GRANT SELECT ON web_driver.view_empresa_arquivos TO 'PapelEmpresa';
 
 CREATE USER IF NOT EXISTS 'empresa'@'localhost' IDENTIFIED BY 'empresa123';
 

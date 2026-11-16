@@ -4,6 +4,8 @@ GRANT SELECT, INSERT, UPDATE, DELETE ON web_driver.Plano TO 'PapelAdm';
 
 GRANT SELECT, INSERT, UPDATE, DELETE ON web_driver.Instituicao TO 'PapelAdm';
 
+GRANT SELECT, INSERT, UPDATE, DELETE ON web_driver.Conta_Empresa TO 'PapelAdm';
+
 GRANT SELECT, INSERT, UPDATE, DELETE ON web_driver.Usuario TO 'PapelAdm';
 
 GRANT SELECT, INSERT, UPDATE, DELETE ON web_driver.Administrador TO 'PapelAdm';
@@ -19,6 +21,8 @@ GRANT SELECT, INSERT, UPDATE, DELETE ON web_driver.Comentario TO 'PapelAdm';
 GRANT SELECT, INSERT, UPDATE, DELETE ON web_driver.Historico TO 'PapelAdm';
 
 GRANT SELECT, INSERT, UPDATE, DELETE ON web_driver.Acesso_Arquivo TO 'PapelAdm';
+
+GRANT SELECT ON web_driver.view_admin TO 'PapelAdm';
 
 CREATE USER IF NOT EXISTS 'administrador'@'localhost' IDENTIFIED BY 'adm123';
 
