@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS Arquivo(
     localizacao VARCHAR(255) NOT NULL,
     url VARCHAR(500) NOT NULL,
 
-    id_usuario INT,
+    id_usuario INT NOT NULL,
     FOREIGN KEY (id_usuario) REFERENCES Usuario(id)
 );
 

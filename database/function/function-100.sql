@@ -3,6 +3,7 @@ DELIMITER $$
 CREATE FUNCTION Verificar_data(id_arquivo INT)
 
 RETURNS BOOLEAN
+READS SQL DATA
 BEGIN 
 
         DECLARE data_comp DATETIME;
