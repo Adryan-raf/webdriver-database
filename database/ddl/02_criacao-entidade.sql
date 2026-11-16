@@ -65,7 +65,12 @@ CREATE TABLE IF NOT EXISTS Suporte(
 );
 
 CREATE TABLE IF NOT EXISTS Opera(
-    operacao VARCHAR(255),
+    operacao ENUM(
+        'CARREGAR',
+        'ATUALIZAR',
+        'REMOVER',
+        'COMPARTILHAR'
+    ) NOT NULL,
     
     id_usuario INT NOT NULL,
     id_arquivo INT NOT NULL,
@@ -73,7 +78,7 @@ CREATE TABLE IF NOT EXISTS Opera(
 
     FOREIGN KEY (id_usuario) REFERENCEs Usuario(id),
     FOREIGN KEY (id_arquivo) REFERENCES Arquivo(id),
-    FOREIGN KEY (id_usuario) REFERENCES Usuario(id)
+    FOREIGN KEY (id_receptor) REFERENCES Usuario(id)
 );
 
 CREATE TABLE IF NOT EXISTS Comentario(
