@@ -11,7 +11,7 @@ SELECT
 FROM Arquivo a
 
 WHERE a.id IN(
-    SELECT id_arquivo FROM Opera WHERE id_usuario = 1 -- Implementar depois: id_usuario_atual()
+    SELECT id_arquivo FROM possui WHERE id_usuario = 1 -- Implementar depois: id_usuario_atual()
 
     UNION
 
