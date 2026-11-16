@@ -12,26 +12,26 @@ CREATE TABLE IF NOT EXISTS Instituicao(
     endereco VARCHAR(255) NOT NULL,
     causa_social VARCHAR(255) NOT NULL,
 
-    id_plano INT NOT NULL,
+    id_plano INT,
     FOREIGN KEY (id_plano) REFERENCES Plano(id)
 );
 
 CREATE TABLE IF NOT EXISTS Usuario(
     id INT PRIMARY KEY AUTO_INCREMENT,
-    login VARCHAR(255) NOT NULL,
+    login VARCHAR(255) NOT NULL UNIQUE,
     senha VARCHAR(255) NOT NULL,
     data_ingresso DATE NOT NULL,
-    email VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
     nome VARCHAR(255) NOT NULL,
     
-    id_instituicao INT NOT NULL,
+    id_instituicao INT,
     FOREIGN KEY (id_instituicao) REFERENCES Instituicao(id)
 );
 
 CREATE TABLE IF NOT EXISTS Administrador(
     id INT PRIMARY KEY AUTO_INCREMENT,
     
-    id_usuario INT NOT NULL,
+    id_usuario INT NOT NULL UNIQUE,
     FOREIGN KEY (id_usuario) REFERENCES Usuario(id)
 );
 
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS Arquivo(
     tipo VARCHAR(255) NOT NULL,
     permissoes_acesso VARCHAR(255) NOT NULL,
     tamanho BIGINT NOT NULL,
-    data_ultima_mod DATE NOT NULL,
+    data_ultima_mod DATETIME NOT NULL,
     localizacao VARCHAR(255) NOT NULL,
     url VARCHAR(500) NOT NULL,
 
