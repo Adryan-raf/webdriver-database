@@ -1,0 +1,2 @@
+DELETE FROM Usuario
+WHERE id = 3;
