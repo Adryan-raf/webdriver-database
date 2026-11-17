@@ -54,11 +54,29 @@ label {
     font-size: 14px;
 }
 
+.checkbox-inline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 6px;
+}
+
+.checkbox-inline input {
+    width: auto;
+    max-width: none;
+}
+
 input, select, textarea {
     width: 100%;
     max-width: 420px;
     padding: 6px;
     box-sizing: border-box;
+}
+
+small {
+    display: block;
+    margin-top: 6px;
+    color: #555;
 }
 
 button, .btn {

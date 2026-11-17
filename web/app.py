@@ -115,6 +115,15 @@ def usuarios():
     ok = True
     if request.method == "POST":
         if request.form.get("id"):
+            senha = request.form["senha"].strip()
+            if not senha:
+                registro_atual = consultar(
+                    "SELECT senha FROM Usuario WHERE id = %s",
+                    (request.form["id"],),
+                )
+                if registro_atual:
+                    senha = registro_atual[0]["senha"]
+
             ok, mensagem = executar(
                 """
                 UPDATE Usuario
@@ -124,7 +133,7 @@ def usuarios():
                 """,
                 (
                     request.form["login"],
-                    request.form["senha"],
+                    senha,
                     request.form["nome"],
                     request.form["email"],
                     request.form["data_ingresso"],

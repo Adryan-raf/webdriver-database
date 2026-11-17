@@ -9,7 +9,16 @@
     <input type="hidden" name="id" value="{{ editando.id }}">
     {% endif %}
     <label>Login <input name="login" required value="{{ editando.login if editando else '' }}"></label>
-    <label>Senha <input name="senha" required value="{{ editando.senha if editando else '' }}"></label>
+    <label>
+        Senha
+        <input id="senha_usuario" type="password" name="senha" {% if not editando %}required{% endif %} value="">
+    </label>
+    <label class="checkbox-inline">
+        <input type="checkbox" id="mostrar_senha"> Mostrar senha
+    </label>
+    {% if editando %}
+    <small>Deixe em branco para manter a senha atual.</small>
+    {% endif %}
     <label>Nome <input name="nome" required value="{{ editando.nome if editando else '' }}"></label>
     <label>Email <input type="email" name="email" required value="{{ editando.email if editando else '' }}"></label>
     <label>Data ingresso <input type="date" name="data_ingresso" required value="{{ editando.data_ingresso if editando else '' }}"></label>
@@ -27,6 +36,16 @@
     <a class="btn" href="{{ url_for('usuarios') }}">Cancelar</a>
     {% endif %}
 </form>
+<script>
+    const campoSenha = document.getElementById('senha_usuario');
+    const checkboxSenha = document.getElementById('mostrar_senha');
+
+    if (campoSenha && checkboxSenha) {
+        checkboxSenha.addEventListener('change', function () {
+            campoSenha.type = this.checked ? 'text' : 'password';
+        });
+    }
+</script>
 
 <h2>Lista</h2>
 <table>
