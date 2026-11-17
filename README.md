@@ -7,6 +7,21 @@
 
 Este é o projeto final para a disciplina de Projeto de Banco de Dados, no qual desenvolvemos um banco de dados para um sistema CRUD utilizando o SGBD MySQL. O projeto abrange todo o ciclo de vida de um banco de dados, incluindo criação de diagramas, scripts,cmanipulação e documentação detalhada.
 
+## Fluxo de desenvolvimento
+
+Este repositório foi organizado em uma branch de feature para a interface web e em branches de apoio para a modelagem do banco.
+
+A estrutura atual combina:
+- a base de dados em `database/`
+- a aplicação em `web/`
+- a organização de documentação e dependências na raiz do projeto
+
+Para uso local, a sequência normal é:
+1. criar as tabelas e views do banco
+2. configurar o arquivo `.env`
+3. instalar dependências com `pip install -r requirements.txt`
+4. iniciar a aplicação com `python web/app.py`
+
 ## Diagramas
 
 ### Diagrama Conceitual do Banco de Dados

@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block title %}Suporte{% endblock %}
+{% block content %}
+<h1>Suporte</h1>
+
+<p>Para criar suporte precisa existir um Administrador (tabela Administrador ligada a um Usuario).</p>
+
+<h2>Criar solicitacao</h2>
+<form method="post">
+    <label>Usuario solicitante
+        <select name="id_usuario" required>
+            {% for u in usuarios %}
+            <option value="{{ u.id }}">{{ u.id }} - {{ u.login }}</option>
+            {% endfor %}
+        </select>
+    </label>
+    <label>Administrador
+        <select name="id_admin" required>
+            {% for a in admins %}
+            <option value="{{ a.id }}">admin {{ a.id }} (usuario {{ a.id_usuario }})</option>
+            {% endfor %}
+        </select>
+    </label>
+    <label>Arquivo (opcional)
+        <select name="id_arquivo">
+            <option value="">(nenhum)</option>
+            {% for arq in arquivos %}
+            <option value="{{ arq.id }}">{{ arq.id }} - {{ arq.nome }}</option>
+            {% endfor %}
+        </select>
+    </label>
+    <label>Dia <input type="date" name="dia" required></label>
+    <label>Hora <input type="time" name="hora" required step="1"></label>
+    <label>Descricao <textarea name="descricao" rows="3" required></textarea></label>
+    <button type="submit">Salvar</button>
+</form>
+
+<h2>Promover usuario a administrador</h2>
+<form method="post" action="{{ url_for('suporte_criar_admin') }}">
+    <label>Usuario
+        <select name="id_usuario" required>
+            {% for u in usuarios %}
+            <option value="{{ u.id }}">{{ u.id }} - {{ u.login }}</option>
+            {% endfor %}
+        </select>
+    </label>
+    <button type="submit">Tornar admin</button>
+</form>
+
+<h2>Lista</h2>
+<table>
+    <tr>
+        <th>ID</th><th>Dia</th><th>Hora</th><th>Usuario</th><th>Admin</th><th>Arquivo</th><th>Descricao</th><th>Acoes</th>
+    </tr>
+    {% for s in itens %}
+    <tr>
+        <td>{{ s.id }}</td>
+        <td>{{ s.dia }}</td>
+        <td>{{ s.hora }}</td>
+        <td>{{ s.id_usuario }}</td>
+        <td>{{ s.id_admin }}</td>
+        <td>{{ s.id_arquivo }}</td>
+        <td>{{ s.descricao }}</td>
+        <td>
+            <a class="btn btn-risco" href="{{ url_for('suporte_excluir', id=s.id) }}">Excluir</a>
+        </td>
+    </tr>
+    {% else %}
+    <tr><td colspan="8">Nenhuma solicitacao.</td></tr>
+    {% endfor %}
+</table>
+{% endblock %}

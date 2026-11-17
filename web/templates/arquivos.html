@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}Arquivos{% endblock %}
+{% block content %}
+<h1>Arquivos</h1>
+
+<h2>{% if editando %}Atualizar #{{ editando.id }}{% else %}Cadastrar{% endif %}</h2>
+<form method="post">
+    {% if editando %}
+    <input type="hidden" name="id" value="{{ editando.id }}">
+    {% endif %}
+    <label>Nome <input name="nome" required value="{{ editando.nome if editando else '' }}"></label>
+    <label>Tipo <input name="tipo" required value="{{ editando.tipo if editando else 'pdf' }}"></label>
+    <label>Permissao acesso (publico)
+        <select name="permissao_acesso">
+            <option value="0" {% if editando and not editando.permissao_acesso %}selected{% endif %}>Nao</option>
+            <option value="1" {% if editando and editando.permissao_acesso %}selected{% endif %}>Sim</option>
+        </select>
+    </label>
+    <label>Tamanho <input name="tamanho" required value="{{ editando.tamanho if editando else '1MB' }}"></label>
+    <label>Data ultima mod <input name="data_ultima_mod" required placeholder="AAAA-MM-DD HH:MM:SS" value="{{ editando.data_ultima_mod if editando else '' }}"></label>
+    <label>Localizacao <input name="localizacao" required value="{{ editando.localizacao if editando else '/docs' }}"></label>
+    <label>URL <input name="url" required value="{{ editando.url if editando else 'http://exemplo.com/arquivo' }}"></label>
+    <label>Dono (usuario)
+        <select name="id_usuario" required>
+            {% for u in usuarios %}
+            <option value="{{ u.id }}" {% if editando and editando.id_usuario == u.id %}selected{% endif %}>
+                {{ u.id }} - {{ u.login }}
+            </option>
+            {% endfor %}
+        </select>
+    </label>
+    <button type="submit">{% if editando %}Atualizar{% else %}Salvar{% endif %}</button>
+    {% if editando %}
+    <a class="btn" href="{{ url_for('arquivos') }}">Cancelar</a>
+    {% endif %}
+</form>
+
+<h2>Lista</h2>
+<table>
+    <tr>
+        <th>ID</th><th>Nome</th><th>Tipo</th><th>Publico</th><th>Tamanho</th><th>Dono</th><th>Acoes</th>
+    </tr>
+    {% for a in itens %}
+    <tr>
+        <td>{{ a.id }}</td>
+        <td>{{ a.nome }}</td>
+        <td>{{ a.tipo }}</td>
+        <td>{{ a.permissao_acesso }}</td>
+        <td>{{ a.tamanho }}</td>
+        <td>{{ a.id_usuario }}</td>
+        <td>
+            <a class="btn" href="{{ url_for('arquivos_editar', id=a.id) }}">Editar</a>
+            <a class="btn btn-risco" href="{{ url_for('arquivos_excluir', id=a.id) }}">Excluir</a>
+        </td>
+    </tr>
+    {% else %}
+    <tr><td colspan="7">Nenhum arquivo cadastrado.</td></tr>
+    {% endfor %}
+</table>
+{% endblock %}

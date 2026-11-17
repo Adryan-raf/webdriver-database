@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Instituicoes{% endblock %}
+{% block content %}
+<h1>Instituicoes</h1>
+
+<h2>Cadastrar</h2>
+<form method="post">
+    <label>Nome <input name="nome" required></label>
+    <label>Endereco <input name="endereco" required></label>
+    <label>Causa social <input name="causa_social" required></label>
+    <label>Plano
+        <select name="id_plano" required>
+            {% for p in planos %}
+            <option value="{{ p.id }}">{{ p.id }} - {{ p.nome }}</option>
+            {% endfor %}
+        </select>
+    </label>
+    <button type="submit">Salvar</button>
+</form>
+
+<h2>Lista</h2>
+<table>
+    <tr>
+        <th>ID</th><th>Nome</th><th>Endereco</th><th>Causa</th><th>Plano</th><th>Acoes</th>
+    </tr>
+    {% for i in itens %}
+    <tr>
+        <td>{{ i.id }}</td>
+        <td>{{ i.nome }}</td>
+        <td>{{ i.endereco }}</td>
+        <td>{{ i.causa_social }}</td>
+        <td>{{ i.id_plano }}</td>
+        <td>
+            <a class="btn btn-risco" href="{{ url_for('instituicoes_excluir', id=i.id) }}">Excluir</a>
+        </td>
+    </tr>
+    {% else %}
+    <tr><td colspan="6">Nenhuma instituicao cadastrada.</td></tr>
+    {% endfor %}
+</table>
+{% endblock %}
