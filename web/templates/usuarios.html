@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}Usuarios{% endblock %}
+{% block content %}
+<h1>Usuarios</h1>
+
+<h2>{% if editando %}Atualizar #{{ editando.id }}{% else %}Cadastrar{% endif %}</h2>
+<form method="post">
+    {% if editando %}
+    <input type="hidden" name="id" value="{{ editando.id }}">
+    {% endif %}
+    <label>Login <input name="login" required value="{{ editando.login if editando else '' }}"></label>
+    <label>Senha <input name="senha" required value="{{ editando.senha if editando else '' }}"></label>
+    <label>Nome <input name="nome" required value="{{ editando.nome if editando else '' }}"></label>
+    <label>Email <input type="email" name="email" required value="{{ editando.email if editando else '' }}"></label>
+    <label>Data ingresso <input type="date" name="data_ingresso" required value="{{ editando.data_ingresso if editando else '' }}"></label>
+    <label>Instituicao
+        <select name="id_instituicao" required>
+            {% for i in instituicoes %}
+            <option value="{{ i.id }}" {% if editando and editando.id_instituicao == i.id %}selected{% endif %}>
+                {{ i.id }} - {{ i.nome }}
+            </option>
+            {% endfor %}
+        </select>
+    </label>
+    <button type="submit">{% if editando %}Atualizar{% else %}Salvar{% endif %}</button>
+    {% if editando %}
+    <a class="btn" href="{{ url_for('usuarios') }}">Cancelar</a>
+    {% endif %}
+</form>
+
+<h2>Lista</h2>
+<table>
+    <tr>
+        <th>ID</th><th>Login</th><th>Nome</th><th>Email</th><th>Ingresso</th><th>Instituicao</th><th>Acoes</th>
+    </tr>
+    {% for u in itens %}
+    <tr>
+        <td>{{ u.id }}</td>
+        <td>{{ u.login }}</td>
+        <td>{{ u.nome }}</td>
+        <td>{{ u.email }}</td>
+        <td>{{ u.data_ingresso }}</td>
+        <td>{{ u.id_instituicao }}</td>
+        <td>
+            <a class="btn" href="{{ url_for('usuarios_editar', id=u.id) }}">Editar</a>
+            <a class="btn btn-risco" href="{{ url_for('usuarios_excluir', id=u.id) }}">Excluir</a>
+        </td>
+    </tr>
+    {% else %}
+    <tr><td colspan="7">Nenhum usuario cadastrado.</td></tr>
+    {% endfor %}
+</table>
+{% endblock %}

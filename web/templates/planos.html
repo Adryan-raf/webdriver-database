@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Planos{% endblock %}
+{% block content %}
+<h1>Planos</h1>
+
+<h2>Cadastrar</h2>
+<form method="post">
+    <label>Nome <input name="nome" required></label>
+    <label>Duracao <input name="duracao" required placeholder="ex: 6 meses"></label>
+    <label>Data aquisicao <input type="date" name="data_aquisicao" required></label>
+    <label>Espaco por usuario <input type="number" name="espaco_por_usuario" required></label>
+    <button type="submit">Salvar</button>
+</form>
+
+<h2>Lista</h2>
+<table>
+    <tr>
+        <th>ID</th><th>Nome</th><th>Duracao</th><th>Data</th><th>Espaco</th><th>Acoes</th>
+    </tr>
+    {% for p in itens %}
+    <tr>
+        <td>{{ p.id }}</td>
+        <td>{{ p.nome }}</td>
+        <td>{{ p.duracao }}</td>
+        <td>{{ p.data_aquisicao }}</td>
+        <td>{{ p.espaco_por_usuario }}</td>
+        <td>
+            <a class="btn btn-risco" href="{{ url_for('planos_excluir', id=p.id) }}">Excluir</a>
+        </td>
+    </tr>
+    {% else %}
+    <tr><td colspan="6">Nenhum plano cadastrado.</td></tr>
+    {% endfor %}
+</table>
+{% endblock %}

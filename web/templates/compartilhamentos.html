@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Compartilhamentos{% endblock %}
+{% block content %}
+<h1>Compartilhamentos (Acesso_Arquivo)</h1>
+
+<h2>Registrar acesso</h2>
+<form method="post">
+    <label>Usuario
+        <select name="id_usuario" required>
+            {% for u in usuarios %}
+            <option value="{{ u.id }}">{{ u.id }} - {{ u.login }}</option>
+            {% endfor %}
+        </select>
+    </label>
+    <label>Arquivo
+        <select name="id_arquivo" required>
+            {% for a in arquivos %}
+            <option value="{{ a.id }}">{{ a.id }} - {{ a.nome }}</option>
+            {% endfor %}
+        </select>
+    </label>
+    <button type="submit">Salvar</button>
+</form>
+
+<h2>Lista</h2>
+<table>
+    <tr><th>Usuario</th><th>Arquivo</th><th>Acoes</th></tr>
+    {% for c in itens %}
+    <tr>
+        <td>{{ c.id_usuario }}</td>
+        <td>{{ c.id_arquivo }}</td>
+        <td>
+            <a class="btn btn-risco"
+               href="{{ url_for('compartilhamentos_excluir', id_usuario=c.id_usuario, id_arquivo=c.id_arquivo) }}">
+                Remover
+            </a>
+        </td>
+    </tr>
+    {% else %}
+    <tr><td colspan="3">Nenhum compartilhamento.</td></tr>
+    {% endfor %}
+</table>
+{% endblock %}

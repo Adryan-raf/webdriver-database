@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Inicio - Web Driver{% endblock %}
+{% block content %}
+<h1>Web Driver</h1>
+<p>Interface simples para testar o CRUD do banco <code>web_driver</code>.</p>
+
+{% if conexao_ok %}
+<p class="ok">{{ mensagem_conexao }}</p>
+{% else %}
+<p class="erro">Sem conexao: {{ mensagem_conexao }}</p>
+{% endif %}
+
+<h2>Operacoes</h2>
+<div class="menu-crud">
+    <a href="{{ url_for('planos') }}">Planos</a>
+    <a href="{{ url_for('instituicoes') }}">Instituicoes</a>
+    <a href="{{ url_for('usuarios') }}">Usuarios</a>
+    <a href="{{ url_for('arquivos') }}">Arquivos</a>
+    <a href="{{ url_for('compartilhamentos') }}">Compartilhamentos</a>
+    <a href="{{ url_for('comentarios') }}">Comentarios</a>
+    <a href="{{ url_for('suporte') }}">Suporte</a>
+    <a href="{{ url_for('historico') }}">Historico (somente leitura)</a>
+</div>
+
+<p>Ordem sugerida: criar Plano → Instituicao → Usuario → Arquivo → demais tabelas.</p>
+{% endblock %}
