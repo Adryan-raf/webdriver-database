@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Web Driver{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <strong>Web Driver</strong> —
+        <a href="{{ url_for('inicio') }}">Inicio</a>
+        <a href="{{ url_for('planos') }}">Planos</a>
+        <a href="{{ url_for('instituicoes') }}">Instituicoes</a>
+        <a href="{{ url_for('usuarios') }}">Usuarios</a>
+        <a href="{{ url_for('arquivos') }}">Arquivos</a>
+        <a href="{{ url_for('compartilhamentos') }}">Compartilhamentos</a>
+        <a href="{{ url_for('comentarios') }}">Comentarios</a>
+        <a href="{{ url_for('suporte') }}">Suporte</a>
+        <a href="{{ url_for('historico') }}">Historico</a>
+    </header>
+    <main>
+        {% if mensagem %}
+            <p class="{{ 'ok' if ok else 'erro' }}">{{ mensagem }}</p>
+        {% endif %}
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

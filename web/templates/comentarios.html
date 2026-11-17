@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Comentarios{% endblock %}
+{% block content %}
+<h1>Comentarios</h1>
+
+<h2>Registrar</h2>
+<form method="post">
+    <label>Usuario
+        <select name="id_usuario" required>
+            {% for u in usuarios %}
+            <option value="{{ u.id }}">{{ u.id }} - {{ u.login }}</option>
+            {% endfor %}
+        </select>
+    </label>
+    <label>Arquivo
+        <select name="id_arquivo" required>
+            {% for a in arquivos %}
+            <option value="{{ a.id }}">{{ a.id }} - {{ a.nome }}</option>
+            {% endfor %}
+        </select>
+    </label>
+    <label>Conteudo <textarea name="conteudo" rows="3" required></textarea></label>
+    <label>Data <input type="date" name="data" required></label>
+    <label>Hora <input type="time" name="hora" required step="1"></label>
+    <button type="submit">Salvar</button>
+</form>
+
+<h2>Lista</h2>
+<table>
+    <tr>
+        <th>ID</th><th>Usuario</th><th>Arquivo</th><th>Data</th><th>Hora</th><th>Conteudo</th><th>Acoes</th>
+    </tr>
+    {% for c in itens %}
+    <tr>
+        <td>{{ c.id }}</td>
+        <td>{{ c.id_usuario }}</td>
+        <td>{{ c.id_arquivo }}</td>
+        <td>{{ c.data }}</td>
+        <td>{{ c.hora }}</td>
+        <td>{{ c.conteudo }}</td>
+        <td>
+            <a class="btn btn-risco" href="{{ url_for('comentarios_excluir', id=c.id) }}">Excluir</a>
+        </td>
+    </tr>
+    {% else %}
+    <tr><td colspan="7">Nenhum comentario.</td></tr>
+    {% endfor %}
+</table>
+{% endblock %}

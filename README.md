@@ -6,6 +6,21 @@ Este é o projeto final para a disciplina de Banco de Dados, no qual desenvolvem
 
 O objetivo deste projeto é modelar e implementar um banco de dados completo para operações de um CRUD dinâmico. 
 
+## Fluxo de desenvolvimento
+
+Este repositório foi organizado em uma branch de feature para a interface web e em branches de apoio para a modelagem do banco.
+
+A estrutura atual combina:
+- a base de dados em `database/`
+- a aplicação em `web/`
+- a organização de documentação e dependências na raiz do projeto
+
+Para uso local, a sequência normal é:
+1. criar as tabelas e views do banco
+2. configurar o arquivo `.env`
+3. instalar dependências com `pip install -r requirements.txt`
+4. iniciar a aplicação com `python web/app.py`
+
 ## Documentação Completa
 
 A documentação completa do projeto pode ser encontrada no arquivo []. O arquivo contém informações detalhadas sobre o projeto, incluindo:

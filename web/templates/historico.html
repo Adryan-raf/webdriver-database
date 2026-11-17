@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Historico{% endblock %}
+{% block content %}
+<h1>Historico</h1>
+<p>Somente leitura. O historico e preenchido pelo uso do sistema / scripts SQL.</p>
+
+<table>
+    <tr>
+        <th>ID</th><th>Arquivo</th><th>Usuario</th><th>Operacao</th><th>Data</th><th>Hora</th><th>Conteudo</th>
+    </tr>
+    {% for h in itens %}
+    <tr>
+        <td>{{ h.id }}</td>
+        <td>{{ h.id_arquivo }}</td>
+        <td>{{ h.id_usuario }}</td>
+        <td>{{ h.operacao }}</td>
+        <td>{{ h.data }}</td>
+        <td>{{ h.hora }}</td>
+        <td>{{ h.conteudo_alterado }}</td>
+    </tr>
+    {% else %}
+    <tr><td colspan="7">Nenhum registro de historico.</td></tr>
+    {% endfor %}
+</table>
+{% endblock %}
